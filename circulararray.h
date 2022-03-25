@@ -7,7 +7,8 @@ class CircularArray
 private:
     T* array;
     int capacity;
-    int back, front;
+    int back;
+    int front;
 
 public:
     CircularArray();
