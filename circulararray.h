@@ -6,32 +6,32 @@ class CircularArray
 {
 private:
     T* array;
-    int capacity;
-    int back;
-    int front;
+    size_t capacity;
+    size_t back;
+    size_t front;
 
 public:
     CircularArray();
-    CircularArray(int _capacity);
+    CircularArray(size_t _capacity);
     virtual ~CircularArray();
     void push_front(T data);
     void push_back(T data);
-    void insert(T data, int pos);
+    void insert(T data, size_t pos);
     T pop_front();
     T pop_back();
     bool is_full();
     bool is_empty();
-    int size();
+    size_t size();
     void clear();
-    T& operator[](int);
+    T& operator[](size_t);
     void sort();
     bool is_sorted();
     void reverse();
     string to_string(string sep = " ");
 
 private:
-    int next(int);
-    int prev(int);
+    size_t next(size_t);
+    size_t prev(size_t);
 };
 
 template <class T>
@@ -41,7 +41,7 @@ CircularArray<T>::CircularArray()
 }
 
 template <class T>
-CircularArray<T>::CircularArray(int _capacity)
+CircularArray<T>::CircularArray(size_t _capacity)
 {
     this->array = new T[_capacity];
     this->capacity = _capacity;
@@ -55,13 +55,13 @@ CircularArray<T>::~CircularArray()
 }
 
 template <class T>
-int CircularArray<T>::prev(int index)
+size_t CircularArray<T>::prev(size_t index)
 {
     return (index == 0) ? capacity - 1 : index - 1;
 }
 
 template <class T>
-int CircularArray<T>::next(int index)
+size_t CircularArray<T>::next(size_t index)
 {
     return (index + 1) % capacity;
 }
@@ -70,7 +70,7 @@ template <class T>
 string CircularArray<T>::to_string(string sep)
 {
     string result = "";
-    for (int i = 0; i < size(); i++)
+    for (size_t i = 0; i < size(); i++)
         result += std::to_string((*this)[i]) + sep;
     return result;
 }
