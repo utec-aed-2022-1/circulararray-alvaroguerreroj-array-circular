@@ -5,10 +5,10 @@ template <class T>
 class CircularArray
 {
 private:
-    T *array;
+    T* array;
     int capacity;
     int back, front;
-    
+
 public:
     CircularArray();
     CircularArray(int _capacity);
@@ -22,11 +22,11 @@ public:
     bool is_empty();
     int size();
     void clear();
-    T &operator[](int);
+    T& operator[](int);
     void sort();
     bool is_sorted();
     void reverse();
-    string to_string(string sep=" ");
+    string to_string(string sep = " ");
 
 private:
     int next(int);
@@ -68,8 +68,8 @@ int CircularArray<T>::next(int index)
 template <class T>
 string CircularArray<T>::to_string(string sep)
 {
-    string result = ""; 
+    string result = "";
     for (int i = 0; i < size(); i++)
         result += std::to_string((*this)[i]) + sep;
-    return result;    
+    return result;
 }
