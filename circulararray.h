@@ -5,8 +5,8 @@ template <class T>
 class CircularArray
 {
 private:
-    T* m_array;
-    T* m_array_end;
+    T** m_array;
+    T** m_array_end;
     size_t m_capacity;
     size_t m_back;
     size_t m_front;
@@ -51,7 +51,7 @@ CircularArray<T>::CircularArray()
 template <class T>
 CircularArray<T>::CircularArray(size_t capacity)
 {
-    m_array = new T[capacity];
+    m_array = new T*[capacity];
     m_array_end = m_array + capacity;
 
     m_capacity = capacity;
