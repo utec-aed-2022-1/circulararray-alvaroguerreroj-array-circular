@@ -12,7 +12,7 @@ private:
 
 public:
     CircularArray();
-    CircularArray(size_t _capacity);
+    CircularArray(size_t capacity);
 
     virtual ~CircularArray();
 
@@ -48,11 +48,11 @@ CircularArray<T>::CircularArray()
 }
 
 template <class T>
-CircularArray<T>::CircularArray(size_t _capacity)
+CircularArray<T>::CircularArray(size_t capacity)
 {
-    m_array = new T[_capacity];
+    m_array = new T[capacity];
 
-    m_capacity = _capacity;
+    m_capacity = capacity;
 
     m_front = -1;
     m_back = -1;
