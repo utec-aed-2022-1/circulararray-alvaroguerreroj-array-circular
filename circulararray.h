@@ -50,11 +50,12 @@ CircularArray<T>::CircularArray()
 template <class T>
 CircularArray<T>::CircularArray(size_t _capacity)
 {
-    this->m_array = new T[_capacity];
-    this->m_capacity = _capacity;
+    m_array = new T[_capacity];
 
-    this->m_front = -1;
-    this->m_back = -1;
+    m_capacity = _capacity;
+
+    m_front = -1;
+    m_back = -1;
 }
 
 template <class T>
