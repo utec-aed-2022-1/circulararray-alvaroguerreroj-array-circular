@@ -5,10 +5,10 @@ template <class T>
 class CircularArray
 {
 private:
-    T* array;
-    size_t capacity;
-    size_t back;
-    size_t front;
+    T* m_array;
+    size_t m_capacity;
+    size_t m_back;
+    size_t m_front;
 
 public:
     CircularArray();
@@ -43,27 +43,28 @@ CircularArray<T>::CircularArray()
 template <class T>
 CircularArray<T>::CircularArray(size_t _capacity)
 {
-    this->array = new T[_capacity];
-    this->capacity = _capacity;
-    this->front = this->back = -1;
+    this->m_array = new T[_capacity];
+    this->m_capacity = _capacity;
+
+    this->m_front = this->m_back = -1;
 }
 
 template <class T>
 CircularArray<T>::~CircularArray()
 {
-    delete[] array;
+    delete[] m_array;
 }
 
 template <class T>
 size_t CircularArray<T>::prev(size_t index)
 {
-    return (index == 0) ? capacity - 1 : index - 1;
+    return (index == 0) ? m_capacity - 1 : index - 1;
 }
 
 template <class T>
 size_t CircularArray<T>::next(size_t index)
 {
-    return (index + 1) % capacity;
+    return (index + 1) % m_capacity;
 }
 
 template <class T>
