@@ -23,15 +23,15 @@ public:
     bool is_empty();
     size_t size();
     void clear();
-    T& operator[](size_t);
+    T& operator[](size_t index);
     void sort();
     bool is_sorted();
     void reverse();
     string to_string(string sep = " ");
 
 private:
-    size_t next(size_t);
-    size_t prev(size_t);
+    size_t next(size_t index);
+    size_t prev(size_t index);
 };
 
 template <class T>
