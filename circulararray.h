@@ -7,9 +7,14 @@ class CircularArray
 private:
     T** m_array;
     T** m_array_end;
+
     size_t m_capacity;
-    size_t m_back;
-    size_t m_front;
+    size_t m_size;
+
+    // These pointers point to the the location where an element added to their
+    // respective direction would be stored.
+    T* m_back;
+    T* m_front;
 
 public:
     CircularArray();
@@ -55,6 +60,7 @@ CircularArray<T>::CircularArray(size_t capacity)
     m_array_end = m_array + capacity;
 
     m_capacity = capacity;
+    m_size = 0;
 
     m_front = -1;
     m_back = -1;
