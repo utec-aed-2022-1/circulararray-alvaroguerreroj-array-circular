@@ -1,14 +1,21 @@
 #include <iostream>
+#include <iterator>
 #include <string>
 
 template <class T>
 class CircularArray
 {
 private:
-    T* m_array;
+    T** m_array;
+    T** m_array_end;
+
     size_t m_capacity;
-    size_t m_back;
-    size_t m_front;
+    size_t m_size;
+
+    // These pointers point to the the location where an element added to their
+    // respective direction would be stored.
+    T** m_back;
+    T** m_front;
 
 public:
     CircularArray();
@@ -37,8 +44,8 @@ public:
     std::string to_string(std::string sep = " ");
 
 private:
-    size_t next(size_t index);
-    size_t prev(size_t index);
+    T** next(T** p);
+    T** prev(T** p);
 };
 
 template <class T>
@@ -50,12 +57,14 @@ CircularArray<T>::CircularArray()
 template <class T>
 CircularArray<T>::CircularArray(size_t capacity)
 {
-    m_array = new T[capacity];
+    m_array = new T*[capacity];
+    m_array_end = m_array + capacity;
 
     m_capacity = capacity;
+    m_size = 0;
 
-    m_front = -1;
-    m_back = -1;
+    m_front = m_array;
+    m_back = m_array;
 }
 
 template <class T>
@@ -65,15 +74,29 @@ CircularArray<T>::~CircularArray()
 }
 
 template <class T>
-size_t CircularArray<T>::prev(size_t index)
+T** CircularArray<T>::prev(T** p)
 {
-    return (index == 0) ? m_capacity - 1 : index - 1;
+    if (p == m_array)
+    {
+        return m_array_end;
+    }
+    else
+    {
+        return p--;
+    }
 }
 
 template <class T>
-size_t CircularArray<T>::next(size_t index)
+T** CircularArray<T>::next(T** p)
 {
-    return (index + 1) % m_capacity;
+    if (p == std::prev(m_array_end))
+    {
+        return m_array;
+    }
+    else
+    {
+        return p++;
+    }
 }
 
 template <class T>
