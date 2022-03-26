@@ -13,20 +13,27 @@ private:
 public:
     CircularArray();
     CircularArray(size_t _capacity);
+
     virtual ~CircularArray();
+
     void push_front(T data);
     void push_back(T data);
     void insert(T data, size_t pos);
+
     T pop_front();
     T pop_back();
+    T& operator[](size_t index);
+
+    void sort();
+    void clear();
+    void reverse();
+
     bool is_full();
     bool is_empty();
-    size_t size();
-    void clear();
-    T& operator[](size_t index);
-    void sort();
     bool is_sorted();
-    void reverse();
+
+    size_t size();
+
     string to_string(string sep = " ");
 
 private:
