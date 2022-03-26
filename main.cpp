@@ -2,8 +2,6 @@
 #include "tester.h"
 #include <iostream>
 
-using namespace std;
-
 int main()
 {
     CircularArray<int>* array = new CircularArray<int>(7);

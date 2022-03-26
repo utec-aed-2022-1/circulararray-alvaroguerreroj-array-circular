@@ -1,5 +1,4 @@
 #include <iostream>
-using namespace std;
 
 template <class T>
 class CircularArray
@@ -34,7 +33,7 @@ public:
 
     size_t size();
 
-    string to_string(string sep = " ");
+    std::string to_string(std::string sep = " ");
 
 private:
     size_t next(size_t index);
@@ -77,9 +76,9 @@ size_t CircularArray<T>::next(size_t index)
 }
 
 template <class T>
-string CircularArray<T>::to_string(string sep)
+std::string CircularArray<T>::to_string(std::string sep)
 {
-    string result = "";
+    std::string result = "";
     for (size_t i = 0; i < size(); i++)
         result += std::to_string((*this)[i]) + sep;
     return result;
