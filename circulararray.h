@@ -107,6 +107,12 @@ bool CircularArray<T>::is_full()
     return m_size == m_capacity;
 }
 
+template <class T>
+bool CircularArray<T>::is_empty()
+{
+    return m_size == 0;
+}
+
 
 template <class T>
 bool CircularArray<T>::is_parted()
