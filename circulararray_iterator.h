@@ -10,8 +10,8 @@ template <class T> class CircularArray;
 template <class T> class CircularArrayIterator
 {
 private:
-    CircularArray<T>& m_carr;
-    T* m_ptr;
+    CircularArray<T> const& m_carr;
+    T** m_ptr;
 
 public:
     using iterator_category = std::random_access_iterator_tag;
@@ -21,13 +21,17 @@ public:
     using reference = T&;
 
 public:
-    CircularArrayIterator(CircularArray<T> carr, T** ptr = nullptr)
+    CircularArrayIterator(CircularArray<T> const& carr, T** ptr = nullptr)
+        : m_carr(carr),
+          m_ptr(ptr)
     {
-        m_carr = carr;
-        m_ptr = ptr;
     }
 
-    CircularArrayIterator(const CircularArrayIterator<T>& it) = default;
+    CircularArrayIterator(const CircularArrayIterator<T>& it)
+        : m_carr(it.m_carr),
+          m_ptr(it.m_ptr)
+    {
+    }
 
     CircularArrayIterator<T>& operator=(const CircularArrayIterator<T>& it) = default;
 
