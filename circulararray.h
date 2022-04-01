@@ -120,9 +120,7 @@ void CircularArray<T>::push_back(T data)
     }
     else
     {
-        std::cout << m_back << std::endl;
         m_back = next(m_back);
-        std::cout << m_back << std::endl;
     }
 
     *m_back = new T(data);
