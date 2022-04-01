@@ -65,8 +65,8 @@ CircularArray<T>::CircularArray(size_t capacity)
     m_capacity = capacity;
     m_size = 0;
 
-    m_front = m_array;
-    m_back = m_array;
+    m_front = nullptr;
+    m_back = nullptr;
 }
 
 template <class T>
