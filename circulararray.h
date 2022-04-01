@@ -31,6 +31,7 @@ public:
     T pop_back();
     T& operator[](size_t index);
 
+    void enlarge();
     void sort();
     void clear();
     void reverse();
@@ -75,6 +76,42 @@ CircularArray<T>::~CircularArray()
     delete[] m_array;
 }
 
+
+template <class T>
+void CircularArray<T>::enlarge()
+{
+    size_t new_capacity = std::max((size_t)10, m_capacity << 1);
+
+    T** new_array = new T*[new_capacity];
+    T** cur_add_array = new_array;
+
+    T** start = m_front;
+
+    while (start != m_back)
+    {
+        *cur_add_array = *start;
+
+        cur_add_array++;
+        start = next(start);
+    }
+
+    delete[] m_array;
+
+    m_array = new_array;
+    m_array_end = cur_add_array;
+    m_capacity = new_capacity;
+
+    if (m_size == 0)
+    {
+        m_front = nullptr;
+        m_back = nullptr;
+    }
+    else
+    {
+        m_front = m_array;
+        m_back = std::prev(m_array_end);
+    }
+}
 template <class T>
 T** CircularArray<T>::prev(T** p)
 {
