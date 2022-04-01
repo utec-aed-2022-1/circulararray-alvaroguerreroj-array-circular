@@ -34,7 +34,7 @@ public:
 
     T pop_front();
     T pop_back();
-    T& operator[](size_t index);
+    T& operator[](typename CircularArrayIterator<T>::difference_type index);
 
     CircularArrayIterator<T> begin() const;
     CircularArrayIterator<T> end() const;
@@ -176,6 +176,12 @@ T CircularArray<T>::pop_back()
 
     m_size--;
     return ret;
+}
+
+template <class T>
+T& CircularArray<T>::operator[](typename CircularArrayIterator<T>::difference_type index)
+{
+    return *(this->begin() + index);
 }
 
 template <class T>
