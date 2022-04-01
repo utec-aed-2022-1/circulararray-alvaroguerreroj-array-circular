@@ -113,6 +113,13 @@ size_t CircularArray<T>::capacity()
 {
     return m_capacity;
 }
+
+template <class T>
+size_t CircularArray<T>::size()
+{
+    return m_size;
+}
+
 template <class T>
 std::string CircularArray<T>::to_string(std::string sep)
 {
