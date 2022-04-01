@@ -41,6 +41,7 @@ public:
     bool is_parted();
 
     size_t size();
+    size_t capacity();
 
     std::string to_string(std::string sep = " ");
 
@@ -105,6 +106,12 @@ template <class T>
 bool CircularArray<T>::is_parted()
 {
     return m_front != nullptr && m_front > m_back;
+}
+
+template <class T>
+size_t CircularArray<T>::capacity()
+{
+    return m_capacity;
 }
 template <class T>
 std::string CircularArray<T>::to_string(std::string sep)
