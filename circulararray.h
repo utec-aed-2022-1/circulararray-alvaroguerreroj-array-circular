@@ -80,7 +80,7 @@ T** CircularArray<T>::prev(T** p)
 {
     if (p == m_array)
     {
-        return m_array_end;
+        return std::prev(m_array_end);
     }
     else
     {
