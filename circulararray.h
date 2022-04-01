@@ -38,6 +38,7 @@ public:
     bool is_full();
     bool is_empty();
     bool is_sorted();
+    bool is_parted();
 
     size_t size();
 
@@ -99,6 +100,12 @@ T** CircularArray<T>::next(T** p)
     }
 }
 
+
+template <class T>
+bool CircularArray<T>::is_parted()
+{
+    return m_front != nullptr && m_front > m_back;
+}
 template <class T>
 std::string CircularArray<T>::to_string(std::string sep)
 {
