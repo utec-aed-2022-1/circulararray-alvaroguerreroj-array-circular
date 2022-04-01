@@ -1,5 +1,6 @@
 #include <iostream>
 #include <iterator>
+#include <stdexcept>
 #include <string>
 
 #include "circulararray_iterator.h"
