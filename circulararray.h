@@ -112,6 +112,15 @@ void CircularArray<T>::enlarge()
         m_back = std::prev(m_array_end);
     }
 }
+
+template <class T>
+void CircularArray<T>::clear()
+{
+    m_size = 0;
+    m_front = nullptr;
+    m_back = nullptr;
+}
+
 template <class T>
 T** CircularArray<T>::prev(T** p)
 {
