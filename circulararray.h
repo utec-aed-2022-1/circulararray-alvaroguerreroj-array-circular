@@ -2,10 +2,14 @@
 #include <iterator>
 #include <string>
 
+#include "circulararray_iterator.h"
+
 template <class T>
 class CircularArray
 {
 private:
+    friend class CircularArrayIterator<T>;
+
     T** m_array;
     T** m_array_end;
 
@@ -30,6 +34,9 @@ public:
     T pop_front();
     T pop_back();
     T& operator[](size_t index);
+
+    CircularArrayIterator<T> begin() const;
+    CircularArrayIterator<T> end() const;
 
     void enlarge();
     void sort();
@@ -170,6 +177,18 @@ T CircularArray<T>::pop_back()
 
     m_size--;
     return ret;
+}
+
+template <class T>
+CircularArrayIterator<T> CircularArray<T>::begin() const
+{
+    return CircularArrayIterator<T>(*this, m_front);
+}
+
+template <class T>
+CircularArrayIterator<T> CircularArray<T>::end() const
+{
+    return CircularArrayIterator<T>(*this, m_back);
 }
 
 template <class T>
