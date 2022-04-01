@@ -82,7 +82,7 @@ T** CircularArray<T>::prev(T** p)
     }
     else
     {
-        return p--;
+        return std::prev(p);
     }
 }
 
@@ -95,7 +95,7 @@ T** CircularArray<T>::next(T** p)
     }
     else
     {
-        return p++;
+        return std::next(p);
     }
 }
 
