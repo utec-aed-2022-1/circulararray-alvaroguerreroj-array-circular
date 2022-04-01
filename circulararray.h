@@ -76,6 +76,101 @@ CircularArray<T>::~CircularArray()
     delete[] m_array;
 }
 
+template <class T>
+void CircularArray<T>::push_front(T data)
+{
+    if (m_size >= m_capacity)
+    {
+        enlarge();
+    }
+
+    if (m_front == nullptr)
+    {
+        m_front = m_array;
+        m_back = m_array;
+    }
+    else
+    {
+        m_front = prev(m_front);
+    }
+
+    *m_front = new T(data);
+    m_size++;
+}
+
+template <class T>
+void CircularArray<T>::push_back(T data)
+{
+    if (m_size >= m_capacity)
+    {
+        enlarge();
+    }
+
+    if (m_front == nullptr)
+    {
+        m_front = m_array;
+        m_back = m_array;
+    }
+    else
+    {
+        std::cout << m_back << std::endl;
+        m_back = next(m_back);
+        std::cout << m_back << std::endl;
+    }
+
+    *m_back = new T(data);
+    m_size++;
+}
+
+template <class T>
+T CircularArray<T>::pop_front()
+{
+    if (m_size == 0)
+    {
+        throw std::runtime_error("Array is empty");
+    }
+
+    T ret = **m_front;
+    delete *m_front;
+
+    if (m_size == 1)
+    {
+        m_front = nullptr;
+        m_back = nullptr;
+    }
+    else
+    {
+        m_front = next(m_front);
+    }
+
+    m_size--;
+    return ret;
+}
+
+template <class T>
+T CircularArray<T>::pop_back()
+{
+    if (m_size == 0)
+    {
+        throw std::runtime_error("Array is empty");
+    }
+
+    T ret = **m_back;
+    delete *m_back;
+
+    if (m_size == 1)
+    {
+        m_front = nullptr;
+        m_back = nullptr;
+    }
+    else
+    {
+        m_back = prev(m_back);
+    }
+
+    m_size--;
+    return ret;
+}
 
 template <class T>
 void CircularArray<T>::enlarge()
