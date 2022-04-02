@@ -268,6 +268,12 @@ void CircularArray<T>::reverse()
 }
 
 template <class T>
+void CircularArray<T>::sort()
+{
+    std::sort(this->begin(), this->end());
+}
+
+template <class T>
 void CircularArray<T>::clear()
 {
     m_size = 0;
