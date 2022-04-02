@@ -199,12 +199,12 @@ public:
         return *m_ptr;
     }
 
-    T* getPtr() const
+    T** getPtr() const
     {
         return m_ptr;
     }
 
-    const T* getConstPtr() const
+    const T** getConstPtr() const
     {
         return m_ptr;
     }
