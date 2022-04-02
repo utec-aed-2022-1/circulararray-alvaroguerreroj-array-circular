@@ -319,6 +319,11 @@ bool CircularArray<T>::is_empty()
     return m_size == 0;
 }
 
+template <class T>
+bool CircularArray<T>::is_sorted()
+{
+    return std::is_sorted(this->begin(), this->end());
+}
 
 template <class T>
 bool CircularArray<T>::is_parted() const
