@@ -83,10 +83,7 @@ CircularArray<T>::CircularArray(size_t capacity)
 template <class T>
 CircularArray<T>::~CircularArray()
 {
-    for (auto it = begin(); it != end(); it++)
-    {
-        delete(*it.getPtr());
-    }
+    this->clear();
 
     delete[] m_array;
 }
@@ -281,6 +278,11 @@ void CircularArray<T>::sort()
 template <class T>
 void CircularArray<T>::clear()
 {
+    for (auto it = begin(); it != end(); it++)
+    {
+        delete(*it.getPtr());
+    }
+
     m_size = 0;
     m_front = nullptr;
     m_back = nullptr;
