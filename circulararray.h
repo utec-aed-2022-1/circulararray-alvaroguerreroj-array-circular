@@ -143,6 +143,10 @@ void CircularArray<T>::insert(T data, size_t pos)
     {
         this->push_back(data);
     }
+    else if (pos == 0)
+    {
+        this->push_front(data);
+    }
     else
     {
         // This could be optimized by checking whether the index to insert is closer
