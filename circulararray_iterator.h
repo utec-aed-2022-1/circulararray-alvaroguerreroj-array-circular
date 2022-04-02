@@ -61,57 +61,13 @@ public:
 
     CircularArrayIterator<T>& operator+=(const difference_type& movement)
     {
-        if (m_carr.m_front < m_carr.m_back)
-        {
-            std::advance(m_ptr, movement);
-        }
-        else if (m_ptr < m_carr.m_front)
-        {
-            std::advance(m_ptr, movement);
-        }
-        else
-        {
-            difference_type positions_remaining = std::distance(m_ptr, m_carr.m_array_end) - 1;
-
-            if (positions_remaining >= movement)
-            {
-                std::advance(m_ptr, movement);
-            }
-            else
-            {
-                difference_type movement_remaining = movement - positions_remaining - 1;
-                m_ptr = std::next(m_carr.m_array, movement_remaining);
-            }
-        }
-
+        m_ptr = m_carr.iterator_at(this->index() + movement).m_ptr;
         return *this;
     }
 
     CircularArrayIterator<T>& operator-=(const difference_type& movement)
     {
-        if (m_carr.m_front < m_carr.m_back)
-        {
-            std::advance(m_ptr, -movement);
-        }
-        else if (m_ptr >= m_carr.m_front)
-        {
-            std::advance(m_ptr, -movement);
-        }
-        else
-        {
-            difference_type positions_remaining = std::distance(m_carr.m_array, m_ptr);
-
-            if (positions_remaining >= movement)
-            {
-                std::advance(m_ptr, -movement);
-            }
-            else
-            {
-                difference_type movement_remaining = movement - positions_remaining - 1;
-                m_ptr = std::prev(m_carr.m_array_end, movement_remaining + 1);
-            }
-        }
-
+        *this += -movement;
         return *this;
     }
 
