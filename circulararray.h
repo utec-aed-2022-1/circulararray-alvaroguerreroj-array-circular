@@ -133,6 +133,48 @@ void CircularArray<T>::push_back(T data)
 }
 
 template <class T>
+void CircularArray<T>::insert(T data, size_t pos)
+{
+    if (pos > m_size)
+    {
+        throw std::runtime_error("Index out of range");
+    }
+    else if (m_size == 0)
+    {
+        this->push_back(data);
+    }
+    else if (pos == 0)
+    {
+        this->push_front(data);
+    }
+    else
+    {
+        // This could be optimized by checking whether the index to insert is closer
+        // to the front or back and moving the smallest range.
+
+        push_back(T()); // Only to add one element
+
+        auto it_trailing = m_back;
+        delete *it_trailing;
+        auto it = this->prev(m_back);
+
+        *it_trailing = *it;
+
+        while (pos != 0)
+        {
+            it_trailing = it;
+            it = this->prev(it);
+
+            *it_trailing = *it;
+
+            pos--;
+        }
+
+        *it = new T(data);
+    }
+}
+
+template <class T>
 T CircularArray<T>::pop_front()
 {
     if (m_size == 0)
