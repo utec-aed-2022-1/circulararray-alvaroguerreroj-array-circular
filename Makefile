@@ -9,7 +9,7 @@ CFLAGS=-I. -Wall -Werror -Wextra -std=c++17
 DEPS = circulararray.h circulararray_iterator.h queue.h stack.h tester.h
 OBJ = main.o
 
-%.o: %.c $(DEPS)
+%.o: %.cpp $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 main: $(OBJ)
