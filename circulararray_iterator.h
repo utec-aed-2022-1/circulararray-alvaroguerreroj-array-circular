@@ -167,6 +167,13 @@ public:
         }
     }
 
+    /**
+     * Returns the index of the iterator on the circular array.
+     *
+     * This is **not** the index of the iterator on the underlying array.
+     *
+     * @return The index of the iterator within the circular array
+     */
     difference_type index() const
     {
         if (m_ptr == m_carr.m_array_end)
