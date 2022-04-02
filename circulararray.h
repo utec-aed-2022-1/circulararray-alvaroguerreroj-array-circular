@@ -179,6 +179,33 @@ T CircularArray<T>::pop_back()
 }
 
 template <class T>
+CircularArrayIterator<T> CircularArray<T>::iterator_at(size_t index) const
+{
+    if (index == m_size)
+    {
+        return CircularArrayIterator<T>(*this, m_array_end);
+    }
+    else if (!is_parted())
+    {
+        return CircularArrayIterator<T>(*this, m_front + index);
+    }
+    else
+    {
+        size_t positions_remaining = std::distance(m_front, m_array_end) - 1;
+
+        if (positions_remaining >= index)
+        {
+            return CircularArrayIterator<T>(*this, m_front + index);
+        }
+        else
+        {
+            size_t index_remaining = index - positions_remaining - 1;
+            return CircularArrayIterator<T>(*this, m_array + index_remaining);
+        }
+    }
+}
+
+template <class T>
 T& CircularArray<T>::operator[](typename CircularArrayIterator<T>::difference_type index)
 {
     return *(this->begin() + index);
