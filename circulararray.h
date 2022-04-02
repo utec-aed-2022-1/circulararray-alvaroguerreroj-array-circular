@@ -217,7 +217,7 @@ void CircularArray<T>::enlarge()
     delete[] m_array;
 
     m_array = new_array;
-    m_array_end = cur_add_array;
+    m_array_end = new_array + new_capacity;
     m_capacity = new_capacity;
 
     if (m_size == 0)
