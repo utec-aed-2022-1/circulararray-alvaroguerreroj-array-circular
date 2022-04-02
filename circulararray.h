@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <iostream>
 #include <iterator>
 #include <stdexcept>
@@ -258,6 +259,12 @@ void CircularArray<T>::enlarge()
         m_front = m_array;
         m_back = std::prev(m_array_end);
     }
+}
+
+template <class T>
+void CircularArray<T>::reverse()
+{
+    std::reverse(this->begin(), this->end());
 }
 
 template <class T>
