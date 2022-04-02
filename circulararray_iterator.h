@@ -190,6 +190,33 @@ public:
         }
     }
 
+    bool operator<(CircularArrayIterator<T> const& other)
+    {
+        if (!m_carr.is_parted())
+        {
+            return this->m_ptr < other.m_ptr;
+        }
+        else if (this->between_front_and_array_end())
+        {
+            if (other.between_front_and_array_end())
+            {
+                return this->m_ptr < other.m_ptr;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        else if (other.between_front_and_array_end())
+        {
+            return false;
+        }
+        else
+        {
+            return this->m_ptr < other.m_ptr;
+        }
+    }
+
     T& operator*()
     {
         return **m_ptr;
