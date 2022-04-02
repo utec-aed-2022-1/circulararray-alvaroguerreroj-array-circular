@@ -33,7 +33,12 @@ public:
     {
     }
 
-    CircularArrayIterator<T>& operator=(const CircularArrayIterator<T>& it) = default;
+    CircularArrayIterator<T>& operator=(const CircularArrayIterator<T>& it)
+    {
+        m_ptr = it.m_ptr;
+
+        return *this;
+    }
 
     operator bool() const
     {
