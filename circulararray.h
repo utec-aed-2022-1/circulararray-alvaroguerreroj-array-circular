@@ -328,7 +328,11 @@ template <class T>
 std::string CircularArray<T>::to_string(std::string sep)
 {
     std::string result = "";
-    for (size_t i = 0; i < size(); i++)
-        result += std::to_string((*this)[i]) + sep;
+
+    for (auto it = this->begin(); it != this->end(); it++)
+    {
+        result += std::to_string(*it) + sep;
+    }
+
     return result;
 }
