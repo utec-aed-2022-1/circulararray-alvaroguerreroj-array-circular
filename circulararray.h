@@ -34,6 +34,7 @@ public:
 
     T pop_front();
     T pop_back();
+    CircularArrayIterator<T> iterator_at(size_t index) const;
     T& operator[](typename CircularArrayIterator<T>::difference_type index);
 
     CircularArrayIterator<T> begin() const;
