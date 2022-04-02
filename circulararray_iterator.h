@@ -169,7 +169,11 @@ public:
 
     difference_type index() const
     {
-        if (m_carr.m_front <= m_ptr)
+        if (m_ptr == m_carr.m_array_end)
+        {
+            return m_carr.m_size;
+        }
+        else if (m_carr.m_front <= m_ptr)
         {
             return std::distance(m_carr.m_front, m_ptr);
         }
