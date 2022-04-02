@@ -9,10 +9,12 @@ CFLAGS=-I. -Wall -Werror -Wextra -std=c++17
 DEPS = circulararray.h circulararray_iterator.h queue.h stack.h tester.h
 OBJ = main.o
 
+BUILD_DIR = build
+
 %.o: %.cpp $(DEPS)
-	$(CC) -c -o $@ $< $(CFLAGS)
+	$(CC) -c -o $(BUILD_DIR)/$@ $< $(CFLAGS)
 
 main: $(OBJ)
-	$(CC) -o $@ $^ $(CFLAGS)
+	$(CC) -o $(BUILD_DIR)/$@ $(BUILD_DIR)/$^ $(CFLAGS)
 
 # end
