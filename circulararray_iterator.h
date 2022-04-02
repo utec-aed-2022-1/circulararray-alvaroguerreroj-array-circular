@@ -217,6 +217,17 @@ public:
         }
     }
 
+    /**
+     * Returns true if the iterator is between the front (included) and the
+     * array end (not included) in the underlying array.
+     *
+     * @return A boolean
+     */
+    bool between_front_and_array_end() const
+    {
+        return (m_carr.m_front <= m_ptr) && (m_ptr < m_carr.m_array_end);
+    }
+
     T& operator*()
     {
         return **m_ptr;
