@@ -193,7 +193,7 @@ CircularArrayIterator<T> CircularArray<T>::begin() const
 template <class T>
 CircularArrayIterator<T> CircularArray<T>::end() const
 {
-    return CircularArrayIterator<T>(*this, m_back);
+    return CircularArrayIterator<T>(*this, m_array_end);
 }
 
 template <class T>
