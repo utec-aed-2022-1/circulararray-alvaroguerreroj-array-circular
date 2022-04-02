@@ -208,7 +208,7 @@ CircularArrayIterator<T> CircularArray<T>::iterator_at(size_t index) const
 template <class T>
 T& CircularArray<T>::operator[](typename CircularArrayIterator<T>::difference_type index)
 {
-    return *(this->begin() + index);
+    return *iterator_at(index);
 }
 
 template <class T>
