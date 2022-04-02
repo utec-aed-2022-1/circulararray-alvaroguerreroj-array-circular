@@ -83,6 +83,11 @@ CircularArray<T>::CircularArray(size_t capacity)
 template <class T>
 CircularArray<T>::~CircularArray()
 {
+    for (auto it = begin(); it != end(); it++)
+    {
+        delete(*it.getPtr());
+    }
+
     delete[] m_array;
 }
 
