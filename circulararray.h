@@ -47,7 +47,7 @@ public:
     bool is_full();
     bool is_empty();
     bool is_sorted();
-    bool is_parted();
+    bool is_parted() const;
 
     size_t size();
     size_t capacity();
@@ -280,7 +280,7 @@ bool CircularArray<T>::is_empty()
 
 
 template <class T>
-bool CircularArray<T>::is_parted()
+bool CircularArray<T>::is_parted() const
 {
     return m_front != nullptr && m_front > m_back;
 }
