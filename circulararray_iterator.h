@@ -175,7 +175,7 @@ public:
         }
         else
         {
-            return m_carr.m_capacity - std::distance(m_carr.m_front, m_ptr);
+            return m_carr.m_capacity - std::distance(m_ptr, m_carr.m_front);
         }
     }
 
