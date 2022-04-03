@@ -275,16 +275,15 @@ void CircularArray<T>::enlarge()
     size_t new_capacity = std::max((size_t)10, m_capacity << 1);
 
     T** new_array = new T*[new_capacity];
-    T** cur_add_array = new_array;
+    T** next_to_add_new_array = new_array;
 
-    T** start = m_front;
-
-    while (start != m_back)
+    T** it = m_front;
+    for (size_t i = 0; i < m_size; i++)
     {
-        *cur_add_array = *start;
+        *next_to_add_new_array = *it;
 
-        cur_add_array++;
-        start = next(start);
+        next_to_add_new_array++;
+        it = this->next(it);
     }
 
     delete[] m_array;
@@ -301,7 +300,7 @@ void CircularArray<T>::enlarge()
     else
     {
         m_front = m_array;
-        m_back = std::prev(m_array_end);
+        m_back = m_array + m_size - 1;
     }
 }
 
