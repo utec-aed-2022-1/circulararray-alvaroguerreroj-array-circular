@@ -10,6 +10,7 @@ mkShell {
     cling
     clang-tools
     valgrind
+    gdb
     cgdb
 
     gnumake
