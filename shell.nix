@@ -16,4 +16,6 @@ mkShell {
     gnumake
     bear
   ];
+
+  nativeBuildInputs = [ clang-tools ];
 }
