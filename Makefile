@@ -17,4 +17,8 @@ BUILD_DIR = build
 main: $(OBJ)
 	$(CC) -o $(BUILD_DIR)/$@ $(BUILD_DIR)/$^ $(CFLAGS)
 
+.PHONY: format
+format:
+	fd -e c -e cpp -e h -e hpp -x clang-format -i {}
+
 # end
