@@ -14,5 +14,6 @@ mkShell {
     cgdb
 
     gnumake
+    bear
   ];
 }
