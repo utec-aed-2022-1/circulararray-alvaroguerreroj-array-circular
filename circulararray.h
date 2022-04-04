@@ -321,7 +321,7 @@ void CircularArray<T>::clear()
 {
     for (auto it = begin(); it != end(); it++)
     {
-        delete(*it.getPtr());
+        delete (*it.getPtr());
     }
 
     m_size = 0;

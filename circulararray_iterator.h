@@ -4,10 +4,12 @@
 #include <iterator>
 #include <stdexcept>
 
-template <class T> class CircularArray;
+template <class T>
+class CircularArray;
 
 // With help from https://stackoverflow.com/a/22801650
-template <class T> class CircularArrayIterator
+template <class T>
+class CircularArrayIterator
 {
 private:
     CircularArray<T> const& m_carr;
