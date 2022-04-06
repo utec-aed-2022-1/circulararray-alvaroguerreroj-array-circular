@@ -32,4 +32,6 @@ bin/
 *.out
 *.app
 
+# Clangd
 compile_commands.json
+*.idx
