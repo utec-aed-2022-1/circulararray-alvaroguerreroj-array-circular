@@ -14,6 +14,8 @@ mkShell {
     cgdb
 
     gnumake
+    meson
+    ninja
     bear
   ];
 
