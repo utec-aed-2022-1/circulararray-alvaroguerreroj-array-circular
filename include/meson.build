@@ -1,0 +1,5 @@
+install_headers('circulararray.h')
+install_headers('circulararray_iterator.h')
+install_headers('stack.h')
+install_headers('queue.h')
+install_headers('tester.h')
