@@ -1,3 +1,6 @@
+#ifndef STACK_H_
+#define STACK_H_
+
 #include "circulararray.h"
 
 template <typename T>
@@ -18,3 +21,5 @@ class StackArray : private CircularArray<T>
 
     using CircularArray<T>::to_string;
 };
+
+#endif /* STACK_H_ */

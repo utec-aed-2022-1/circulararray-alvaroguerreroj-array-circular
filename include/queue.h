@@ -1,3 +1,6 @@
+#ifndef QUEUE_H_
+#define QUEUE_H_
+
 #include "circulararray.h"
 
 // Inheritance should be private because we don't intend the sub classes (QueueArray and
@@ -25,3 +28,5 @@ class QueueArray : private CircularArray<T>
 
     using CircularArray<T>::to_string;
 };
+
+#endif /* QUEUE_H_ */

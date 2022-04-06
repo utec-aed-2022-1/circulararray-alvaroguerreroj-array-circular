@@ -1,3 +1,6 @@
+#ifndef CIRCULARARRAY_H_
+#define CIRCULARARRAY_H_
+
 #include <algorithm>
 #include <iostream>
 #include <iterator>
@@ -403,3 +406,5 @@ std::string CircularArray<T>::to_string(std::string sep)
 
     return result;
 }
+
+#endif /* CIRCULARARRAY_H_ */
