@@ -50,6 +50,16 @@ public:
         }
     }
 
+    CircularArray(CircularArray&& other) noexcept
+        : m_array{std::exchange(other.m_array, nullptr)},
+          m_array_end{std::exchange(other.m_array_end, nullptr)},
+          m_capacity{std::exchange(other.m_capacity, 0)},
+          m_size{std::exchange(other.m_size, 0)},
+          m_back{std::exchange(other.m_back, nullptr)},
+          m_front{std::exchange(other.m_front, nullptr)}
+    {
+    }
+
     virtual ~CircularArray()
     {
         this->clear();
