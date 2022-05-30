@@ -289,7 +289,14 @@ public:
 
     auto begin() const -> CircularArrayIterator<T>
     {
-        return CircularArrayIterator<T>(*this, m_front);
+        if (m_size != 0)
+        {
+            return CircularArrayIterator<T>(*this, m_front);
+        }
+        else
+        {
+            return this->end();
+        }
     }
 
     auto end() const -> CircularArrayIterator<T>
