@@ -19,19 +19,16 @@ private:
     T* m_array_end;
 
     size_t m_capacity;
-    size_t m_size;
+    size_t m_size { 0 };
 
-    T* m_back;
-    T* m_front;
+    T* m_back { nullptr };
+    T* m_front { nullptr };
 
 public:
     CircularArray(size_t capacity = 0)
         : m_array { new T[capacity] },
           m_array_end { m_array + capacity },
-          m_capacity { capacity },
-          m_size { 0 },
-          m_front { nullptr },
-          m_back { nullptr }
+          m_capacity { capacity }
     {
     }
 
