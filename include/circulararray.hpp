@@ -5,6 +5,7 @@
 #include <iterator>
 #include <stdexcept>
 #include <string>
+#include <utility>
 
 #include "circulararray_iterator.hpp"
 
@@ -29,6 +30,24 @@ public:
           m_array_end{m_array + capacity},
           m_capacity{capacity}
     {
+    }
+
+    CircularArray(CircularArray const& other)
+        : CircularArray{other.m_size}
+    {
+        std::copy(other.begin(), other.end(), m_array);
+        m_size = other.m_size;
+
+        if (m_size == 0)
+        {
+            m_front = nullptr;
+            m_back = nullptr;
+        }
+        else
+        {
+            m_front = m_array;
+            m_back = m_array + m_size;
+        }
     }
 
     virtual ~CircularArray()
