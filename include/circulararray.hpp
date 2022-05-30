@@ -37,6 +37,40 @@ public:
         this->clear();
     }
 
+    void reserve(size_t size)
+    {
+        if (m_capacity > size)
+        {
+            return;
+        }
+
+        T* new_array = new T[size];
+        T* next_to_add_new_array = new_array;
+
+        for (auto it = this->begin(); it != this->end(); ++it)
+        {
+            *next_to_add_new_array = std::move((it));
+            ++next_to_add_new_array;
+        }
+
+        delete[] m_array;
+        m_array = new_array;
+
+        m_array_end = new_array + size;
+        m_capacity = size;
+
+        if (m_size == 0)
+        {
+            m_front = nullptr;
+            m_back = nullptr;
+        }
+        else
+        {
+            m_front = m_array;
+            m_back = m_array + m_size - 1;
+        }
+    }
+
     void push_front(T data)
     {
         if (m_size >= m_capacity)
@@ -210,35 +244,7 @@ public:
     void enlarge()
     {
         size_t new_capacity = std::max((size_t)10, m_capacity << 1);
-
-        T* new_array = new T[new_capacity];
-        T* next_to_add_new_array = new_array;
-
-        T* it = m_front;
-        for (size_t i = 0; i < m_size; i++)
-        {
-            *next_to_add_new_array = *it;
-
-            next_to_add_new_array++;
-            it = this->next(it);
-        }
-
-        delete[] m_array;
-
-        m_array = new_array;
-        m_array_end = new_array + new_capacity;
-        m_capacity = new_capacity;
-
-        if (m_size == 0)
-        {
-            m_front = nullptr;
-            m_back = nullptr;
-        }
-        else
-        {
-            m_front = m_array;
-            m_back = m_array + m_size - 1;
-        }
+        this->reserve(new_capacity);
     }
 
     void sort()
