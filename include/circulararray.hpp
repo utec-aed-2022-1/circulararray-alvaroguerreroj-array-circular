@@ -370,7 +370,7 @@ public:
         return m_capacity;
     }
 
-    auto to_string(std::string sep = " ") -> std::string
+    auto to_string(std::string const& sep = " ") -> std::string
     {
         std::string result = "";
 
