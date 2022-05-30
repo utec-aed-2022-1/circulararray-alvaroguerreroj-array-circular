@@ -101,7 +101,7 @@ public:
 
         for (auto it = this->begin(); it != this->end(); ++it)
         {
-            *next_to_add_new_array = std::move((it));
+            *next_to_add_new_array = std::move(*it);
             ++next_to_add_new_array;
         }
 
