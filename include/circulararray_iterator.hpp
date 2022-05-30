@@ -3,11 +3,11 @@
 #include <iterator>
 #include <stdexcept>
 
-template <class T>
+template<class T>
 class CircularArray;
 
 // With help from https://stackoverflow.com/a/22801650
-template <class T>
+template<class T>
 class CircularArrayIterator
 {
 private:
@@ -28,13 +28,13 @@ public:
     {
     }
 
-    CircularArrayIterator(const CircularArrayIterator<T>& it)
+    CircularArrayIterator(CircularArrayIterator<T> const& it)
         : m_carr(it.m_carr),
           m_ptr(it.m_ptr)
     {
     }
 
-    CircularArrayIterator<T>& operator=(const CircularArrayIterator<T>& it)
+    auto operator=(CircularArrayIterator<T> const& it) -> CircularArrayIterator<T>&
     {
         m_ptr = it.m_ptr;
 
@@ -50,69 +50,69 @@ public:
             return false;
     }
 
-    bool operator==(const CircularArrayIterator<T>& it) const
+    auto operator==(CircularArrayIterator<T> const& it) const -> bool
     {
         return m_ptr == it.m_ptr && &m_carr == &it.m_carr;
     }
 
-    bool operator!=(const CircularArrayIterator<T>& it) const
+    auto operator!=(CircularArrayIterator<T> const& it) const -> bool
     {
         return !(*this == it);
     }
 
-    CircularArrayIterator<T>& operator+=(const difference_type& movement)
+    auto operator+=(difference_type const& movement) -> CircularArrayIterator<T>&
     {
         m_ptr = m_carr.iterator_at(this->index() + movement).m_ptr;
         return *this;
     }
 
-    CircularArrayIterator<T>& operator-=(const difference_type& movement)
+    auto operator-=(difference_type const& movement) -> CircularArrayIterator<T>&
     {
         *this += -movement;
         return *this;
     }
 
-    CircularArrayIterator<T>& operator++()
+    auto operator++() -> CircularArrayIterator<T>&
     {
         *this += 1;
         return *this;
     }
 
-    CircularArrayIterator<T>& operator--()
+    auto operator--() -> CircularArrayIterator<T>&
     {
         *this -= 1;
         return *this;
     }
 
-    CircularArrayIterator<T> operator++(int)
+    auto operator++(int) -> CircularArrayIterator<T>
     {
         auto ret = *this;
         ++*this;
         return ret;
     }
 
-    CircularArrayIterator<T> operator--(int)
+    auto operator--(int) -> CircularArrayIterator<T>
     {
         auto ret = *this;
         --*this;
         return ret;
     }
 
-    CircularArrayIterator<T> operator+(const difference_type& movement)
+    auto operator+(difference_type const& movement) -> CircularArrayIterator<T>
     {
         auto ret = *this;
         ret += movement;
         return ret;
     }
 
-    CircularArrayIterator<T> operator-(const difference_type& movement)
+    auto operator-(difference_type const& movement) -> CircularArrayIterator<T>
     {
         auto ret = *this;
         ret -= movement;
         return ret;
     }
 
-    difference_type operator-(const CircularArrayIterator<T>& it)
+    auto operator-(CircularArrayIterator<T> const& it) -> difference_type
     {
         if (m_carr.is_parted())
         {
@@ -131,7 +131,7 @@ public:
      *
      * @return The index of the iterator within the circular array
      */
-    difference_type index() const
+    auto index() const -> difference_type
     {
         if (m_ptr == m_carr.m_array_end)
         {
@@ -147,7 +147,7 @@ public:
         }
     }
 
-    bool operator<(CircularArrayIterator<T> const& other)
+    auto operator<(CircularArrayIterator<T> const& other) -> bool
     {
         if (!m_carr.is_parted())
         {
@@ -180,32 +180,32 @@ public:
      *
      * @return A boolean
      */
-    bool between_front_and_array_end() const
+    auto between_front_and_array_end() const -> bool
     {
         return (m_carr.m_front <= m_ptr) && (m_ptr < m_carr.m_array_end);
     }
 
-    T& operator*()
+    auto operator*() -> T&
     {
         return *m_ptr;
     }
 
-    const T& operator*() const
+    auto operator*() const -> const T&
     {
         return *m_ptr;
     }
 
-    T* operator->()
+    auto operator->() -> T*
     {
         return *m_ptr;
     }
 
-    T* getPtr() const
+    auto getPtr() const -> T*
     {
         return m_ptr;
     }
 
-    const T* getConstPtr() const
+    auto getConstPtr() const -> const T*
     {
         return m_ptr;
     }
