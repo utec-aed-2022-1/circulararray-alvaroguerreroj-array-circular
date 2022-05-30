@@ -45,18 +45,9 @@ public:
     CircularArray(CircularArray const& other)
         : CircularArray{other.m_size}
     {
-        std::copy(other.begin(), other.end(), m_array);
-        m_size = other.m_size;
-
-        if (m_size == 0)
+        for (auto const& e : other)
         {
-            m_front = nullptr;
-            m_back = nullptr;
-        }
-        else
-        {
-            m_front = m_array;
-            m_back = m_array + m_size;
+            this->push_back(e);
         }
     }
 
