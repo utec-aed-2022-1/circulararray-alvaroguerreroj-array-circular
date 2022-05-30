@@ -154,7 +154,6 @@ public:
         }
     }
 
-    auto pop_front() -> T
     auto front() -> T&
     {
         return *m_front;
@@ -165,13 +164,12 @@ public:
         return *m_back;
     }
 
+    void pop_front()
     {
         if (m_size == 0)
         {
             throw std::runtime_error("Array is empty");
         }
-
-        T ret = *m_front;
 
         if (m_size == 1)
         {
@@ -184,17 +182,14 @@ public:
         }
 
         m_size--;
-        return ret;
     }
 
-    auto pop_back() -> T
+    void pop_back()
     {
         if (m_size == 0)
         {
             throw std::runtime_error("Array is empty");
         }
-
-        T ret = *m_back;
 
         if (m_size == 1)
         {
@@ -207,7 +202,6 @@ public:
         }
 
         m_size--;
-        return ret;
     }
 
     auto iterator_at(size_t index) const -> CircularArrayIterator<T>
