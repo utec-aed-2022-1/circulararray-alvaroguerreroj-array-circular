@@ -1,6 +1,7 @@
 #pragma once
 
 #include <algorithm>
+#include <initializer_list>
 #include <iostream>
 #include <iterator>
 #include <stdexcept>
@@ -30,6 +31,15 @@ public:
           m_array_end{m_array + capacity},
           m_capacity{capacity}
     {
+    }
+
+    CircularArray(std::initializer_list<T> const& il)
+        : CircularArray()
+    {
+        for (auto const& e : il)
+        {
+            this->push_back(e);
+        }
     }
 
     CircularArray(CircularArray const& other)
