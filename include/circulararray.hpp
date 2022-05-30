@@ -9,7 +9,7 @@
 
 #include "circulararray_iterator.hpp"
 
-template <class T>
+template<class T>
 class CircularArray
 {
 private:
@@ -19,16 +19,16 @@ private:
     T* m_array_end;
 
     size_t m_capacity;
-    size_t m_size { 0 };
+    size_t m_size{0};
 
-    T* m_back { nullptr };
-    T* m_front { nullptr };
+    T* m_back{nullptr};
+    T* m_front{nullptr};
 
 public:
     CircularArray(size_t capacity = 0)
-        : m_array { new T[capacity] },
-          m_array_end { m_array + capacity },
-          m_capacity { capacity }
+        : m_array{new T[capacity]},
+          m_array_end{m_array + capacity},
+          m_capacity{capacity}
     {
     }
 
@@ -129,8 +129,8 @@ public:
         }
         else
         {
-            // This could be optimized by checking whether the index to insert is closer
-            // to the front or back and moving the smallest range.
+            // This could be optimized by checking whether the index to insert is closer to the
+            // front or back and moving the smallest range.
 
             push_back(T()); // Only to add one element
 
