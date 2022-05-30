@@ -21,8 +21,6 @@ private:
     size_t m_capacity;
     size_t m_size;
 
-    // These pointers point to the the location where an element added to their
-    // respective direction would be stored.
     T* m_back;
     T* m_front;
 
