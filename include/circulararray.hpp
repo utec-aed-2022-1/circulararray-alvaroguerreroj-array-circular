@@ -71,6 +71,16 @@ public:
         std::swap(m_front, other.m_front);
     }
 
+    void swap(CircularArray&& other)
+    {
+        std::swap(m_array, other.m_array);
+        std::swap(m_array_end, other.m_array_end);
+        std::swap(m_capacity, other.m_capacity);
+        std::swap(m_size, other.m_size);
+        std::swap(m_back, other.m_back);
+        std::swap(m_front, other.m_front);
+    }
+
     auto operator=(CircularArray const& other) -> CircularArray&
     {
         this->swap(CircularArray(other));
