@@ -2,7 +2,7 @@
 # Alumno: Alvaro Guerrero Jiménez
 
 # Circular Array
-- Implementar todas las funciones del array circular en el "circulararray.h"
+- Implementar todas las funciones del array circular en el "circulararray.hpp"
 - Implementar las clases Stack y Queue heredando desde el Array Circular. 
 - Asegurarse que todos los tests pasen.
     - **# Tests: 8**

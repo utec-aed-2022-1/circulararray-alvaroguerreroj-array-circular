@@ -1,5 +1,5 @@
-#include "circulararray.h"
-#include "tester.h"
+#include "circulararray.hpp"
+#include "tester.hpp"
 #include <iostream>
 
 int main()

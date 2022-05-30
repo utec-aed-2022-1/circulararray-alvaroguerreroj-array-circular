@@ -7,7 +7,7 @@
 #include <stdexcept>
 #include <string>
 
-#include "circulararray_iterator.h"
+#include "circulararray_iterator.hpp"
 
 template <class T>
 class CircularArray

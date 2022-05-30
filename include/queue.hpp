@@ -1,7 +1,7 @@
 #ifndef QUEUE_H_
 #define QUEUE_H_
 
-#include "circulararray.h"
+#include "circulararray.hpp"
 
 // Inheritance should be private because we don't intend the sub classes (QueueArray and
 // StackArray) to be able to substitute an object of the superclass CircularArray, but we are

@@ -1,7 +1,7 @@
 #ifndef STACK_H_
 #define STACK_H_
 
-#include "circulararray.h"
+#include "circulararray.hpp"
 
 template <typename T>
 class StackArray : private CircularArray<T>
