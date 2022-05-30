@@ -15,21 +15,21 @@ class CircularArray
 private:
     friend class CircularArrayIterator<T>;
 
-    T** m_array;
-    T** m_array_end;
+    T* m_array;
+    T* m_array_end;
 
     size_t m_capacity;
     size_t m_size;
 
     // These pointers point to the the location where an element added to their
     // respective direction would be stored.
-    T** m_back;
-    T** m_front;
+    T* m_back;
+    T* m_front;
 
 public:
     CircularArray(size_t capacity = 0)
     {
-        m_array = new T*[capacity];
+        m_array = new T[capacity];
         m_array_end = m_array + capacity;
 
         m_capacity = capacity;
@@ -42,7 +42,6 @@ public:
     virtual ~CircularArray()
     {
         this->clear();
-        delete[] m_array;
     }
 
     void push_front(T data)
@@ -62,7 +61,7 @@ public:
             m_front = prev(m_front);
         }
 
-        *m_front = new T(data);
+        *m_front = data;
         m_size++;
     }
 
@@ -83,7 +82,7 @@ public:
             m_back = next(m_back);
         }
 
-        *m_back = new T(data);
+        *m_back = data;
         m_size++;
     }
 
@@ -124,7 +123,7 @@ public:
                 pos--;
             }
 
-            *it = new T(data);
+            *it = data;
         }
     }
 
@@ -135,8 +134,7 @@ public:
             throw std::runtime_error("Array is empty");
         }
 
-        T ret = **m_front;
-        delete *m_front;
+        T ret = *m_front;
 
         if (m_size == 1)
         {
@@ -159,8 +157,7 @@ public:
             throw std::runtime_error("Array is empty");
         }
 
-        T ret = **m_back;
-        delete *m_back;
+        T ret = *m_back;
 
         if (m_size == 1)
         {
@@ -221,10 +218,10 @@ public:
     {
         size_t new_capacity = std::max((size_t)10, m_capacity << 1);
 
-        T** new_array = new T*[new_capacity];
-        T** next_to_add_new_array = new_array;
+        T* new_array = new T[new_capacity];
+        T* next_to_add_new_array = new_array;
 
-        T** it = m_front;
+        T* it = m_front;
         for (size_t i = 0; i < m_size; i++)
         {
             *next_to_add_new_array = *it;
@@ -258,11 +255,9 @@ public:
 
     void clear()
     {
-        for (auto it = begin(); it != end(); it++)
-        {
-            delete (*it.getPtr());
-        }
+        delete[] m_array;
 
+        m_capacity = 0;
         m_size = 0;
         m_front = nullptr;
         m_back = nullptr;
@@ -316,7 +311,7 @@ public:
     }
 
 private:
-    T** next(T** p)
+    T* next(T* p)
     {
         if (p == std::prev(m_array_end))
         {
@@ -328,7 +323,7 @@ private:
         }
     }
 
-    T** prev(T** p)
+    T* prev(T* p)
     {
         if (p == m_array)
         {

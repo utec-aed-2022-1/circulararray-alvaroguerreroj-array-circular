@@ -13,7 +13,7 @@ class CircularArrayIterator
 {
 private:
     CircularArray<T> const& m_carr;
-    T** m_ptr;
+    T* m_ptr;
 
 public:
     using iterator_category = std::random_access_iterator_tag;
@@ -23,7 +23,7 @@ public:
     using reference = T&;
 
 public:
-    CircularArrayIterator(CircularArray<T> const& carr, T** ptr = nullptr)
+    CircularArrayIterator(CircularArray<T> const& carr, T* ptr = nullptr)
         : m_carr(carr),
           m_ptr(ptr)
     {
@@ -188,12 +188,12 @@ public:
 
     T& operator*()
     {
-        return **m_ptr;
+        return *m_ptr;
     }
 
     const T& operator*() const
     {
-        return **m_ptr;
+        return *m_ptr;
     }
 
     T* operator->()
@@ -201,12 +201,12 @@ public:
         return *m_ptr;
     }
 
-    T** getPtr() const
+    T* getPtr() const
     {
         return m_ptr;
     }
 
-    const T** getConstPtr() const
+    const T* getConstPtr() const
     {
         return m_ptr;
     }
