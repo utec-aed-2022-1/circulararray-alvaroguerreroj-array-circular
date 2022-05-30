@@ -155,6 +155,16 @@ public:
     }
 
     auto pop_front() -> T
+    auto front() -> T&
+    {
+        return *m_front;
+    }
+
+    auto back() -> T&
+    {
+        return *m_back;
+    }
+
     {
         if (m_size == 0)
         {
