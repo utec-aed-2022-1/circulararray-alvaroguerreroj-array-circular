@@ -77,6 +77,13 @@ public:
         return *this;
     }
 
+    auto operator=(CircularArray&& other) noexcept -> CircularArray&
+    {
+        this->swap(other);
+
+        return *this;
+    }
+
     virtual ~CircularArray()
     {
         this->clear();
