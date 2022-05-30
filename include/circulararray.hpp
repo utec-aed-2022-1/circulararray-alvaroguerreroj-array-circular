@@ -351,7 +351,7 @@ public:
         return m_front != nullptr && m_front > m_back;
     }
 
-    auto size() -> size_t
+    auto size() const -> size_t
     {
         return m_size;
     }
