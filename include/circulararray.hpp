@@ -70,6 +70,13 @@ public:
         std::swap(m_front, other.m_front);
     }
 
+    auto operator=(CircularArray const& other) -> CircularArray&
+    {
+        this->swap(CircularArray(other));
+
+        return *this;
+    }
+
     virtual ~CircularArray()
     {
         this->clear();
