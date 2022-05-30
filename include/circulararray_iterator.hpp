@@ -1,5 +1,4 @@
-#ifndef CIRCULARARRAY_ITERATOR_H_
-#define CIRCULARARRAY_ITERATOR_H_
+#pragma once
 
 #include <iterator>
 #include <stdexcept>
@@ -211,5 +210,3 @@ public:
         return m_ptr;
     }
 };
-
-#endif // CIRCULARARRAY_ITERATOR_H_

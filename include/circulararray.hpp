@@ -1,5 +1,4 @@
-#ifndef CIRCULARARRAY_H_
-#define CIRCULARARRAY_H_
+#pragma once
 
 #include <algorithm>
 #include <iostream>
@@ -338,5 +337,3 @@ private:
         }
     }
 };
-
-#endif /* CIRCULARARRAY_H_ */

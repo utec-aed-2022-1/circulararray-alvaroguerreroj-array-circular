@@ -1,5 +1,4 @@
-#ifndef QUEUE_H_
-#define QUEUE_H_
+#pragma once
 
 #include "circulararray.hpp"
 
@@ -28,5 +27,3 @@ class QueueArray : private CircularArray<T>
 
     using CircularArray<T>::to_string;
 };
-
-#endif /* QUEUE_H_ */

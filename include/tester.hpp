@@ -1,5 +1,4 @@
-#ifndef TESTER_H_
-#define TESTER_H_
+#pragma once
 
 #include <iostream>
 
@@ -28,5 +27,3 @@ int TrueAsserts = 0;
     {                              \
     } while (false)
 #endif
-
-#endif /* TESTER_H_ */

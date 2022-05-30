@@ -1,5 +1,4 @@
-#ifndef STACK_H_
-#define STACK_H_
+#pragma once
 
 #include "circulararray.hpp"
 
@@ -21,5 +20,3 @@ class StackArray : private CircularArray<T>
 
     using CircularArray<T>::to_string;
 };
-
-#endif /* STACK_H_ */
