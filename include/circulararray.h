@@ -27,8 +27,17 @@ private:
     T** m_front;
 
 public:
-    CircularArray();
-    CircularArray(size_t capacity);
+    CircularArray(size_t capacity = 0)
+    {
+        m_array = new T*[capacity];
+        m_array_end = m_array + capacity;
+
+        m_capacity = capacity;
+        m_size = 0;
+
+        m_front = nullptr;
+        m_back = nullptr;
+    }
 
     virtual ~CircularArray();
 
@@ -63,25 +72,6 @@ private:
     T** next(T** p);
     T** prev(T** p);
 };
-
-template <class T>
-CircularArray<T>::CircularArray()
-{
-    CircularArray(0);
-}
-
-template <class T>
-CircularArray<T>::CircularArray(size_t capacity)
-{
-    m_array = new T*[capacity];
-    m_array_end = m_array + capacity;
-
-    m_capacity = capacity;
-    m_size = 0;
-
-    m_front = nullptr;
-    m_back = nullptr;
-}
 
 template <class T>
 CircularArray<T>::~CircularArray()
