@@ -36,28 +36,28 @@ public:
     void push_back(T data);
     void insert(T data, size_t pos);
 
-    T pop_front();
-    T pop_back();
-    CircularArrayIterator<T> iterator_at(size_t index) const;
-    T& operator[](typename CircularArrayIterator<T>::difference_type index);
+    auto pop_front() -> T;
+    auto pop_back() -> T;
+    auto iterator_at(size_t index) const -> CircularArrayIterator<T>;
+    auto operator[](typename CircularArrayIterator<T>::difference_type index) -> T&;
 
-    CircularArrayIterator<T> begin() const;
-    CircularArrayIterator<T> end() const;
+    auto begin() const -> CircularArrayIterator<T>;
+    auto end() const -> CircularArrayIterator<T>;
 
     void enlarge();
     void sort();
     void clear();
     void reverse();
 
-    bool is_full();
-    bool is_empty();
-    bool is_sorted();
-    bool is_parted() const;
+    auto is_full() -> bool;
+    auto is_empty() -> bool;
+    auto is_sorted() -> bool;
+    [[nodiscard]] auto is_parted() const -> bool;
 
-    size_t size();
-    size_t capacity();
+    auto size() -> size_t;
+    auto capacity() -> size_t;
 
-    std::string to_string(std::string sep = " ");
+    auto to_string(std::string sep = " ") -> std::string;
 
 private:
     T** next(T** p);
