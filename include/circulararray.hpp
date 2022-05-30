@@ -314,7 +314,7 @@ public:
     }
 
 private:
-    T* next(T* p)
+    auto next(T* p) -> T*
     {
         if (p == std::prev(m_array_end))
         {
@@ -326,7 +326,7 @@ private:
         }
     }
 
-    T* prev(T* p)
+    auto prev(T* p) -> T*
     {
         if (p == m_array)
         {
