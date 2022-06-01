@@ -210,3 +210,13 @@ public:
         return m_ptr;
     }
 };
+
+template<typename T>
+struct std::iterator_traits<CircularArrayIterator<T>>
+{
+    using difference_type = typename CircularArrayIterator<T>::difference_type;
+    using value_type = typename CircularArrayIterator<T>::value_type;
+    using pointer = typename CircularArrayIterator<T>::pointer;
+    using reference = typename CircularArrayIterator<T>::reference;
+    using iterator_category = typename CircularArrayIterator<T>::iterator_category;
+};
