@@ -98,21 +98,21 @@ public:
         return ret;
     }
 
-    auto operator+(difference_type const& movement) -> CircularArrayIterator<T>
+    auto operator+(difference_type const& movement) const -> CircularArrayIterator<T>
     {
         auto ret = *this;
         ret += movement;
         return ret;
     }
 
-    auto operator-(difference_type const& movement) -> CircularArrayIterator<T>
+    auto operator-(difference_type const& movement) const-> CircularArrayIterator<T>
     {
         auto ret = *this;
         ret -= movement;
         return ret;
     }
 
-    auto operator-(CircularArrayIterator<T> const& it) -> difference_type
+    auto operator-(CircularArrayIterator<T> const& it) const -> difference_type
     {
         if (m_carr.is_parted())
         {
