@@ -317,7 +317,7 @@ public:
 
     void enlarge()
     {
-        size_t new_capacity = std::max((size_t)10, m_capacity << 1);
+        size_t new_capacity = std::max(size_t{4}, m_capacity << 1);
         this->reserve(new_capacity);
     }
 
