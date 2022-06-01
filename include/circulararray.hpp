@@ -4,6 +4,7 @@
 #include <initializer_list>
 #include <iostream>
 #include <iterator>
+#include <ostream>
 #include <stdexcept>
 #include <string>
 #include <utility>
@@ -443,6 +444,18 @@ public:
         }
 
         return result;
+    }
+
+    friend auto operator<<(std::ostream& os, CircularArray const& carr) -> std::ostream&
+    {
+        os << "{";
+        for (auto const& e : carr)
+        {
+            os << " " << e;
+        }
+        os << " }";
+
+        return os;
     }
 
 private:
