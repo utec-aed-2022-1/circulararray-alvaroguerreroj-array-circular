@@ -361,6 +361,11 @@ public:
         return *iterator_at(index);
     }
 
+    auto operator[](typename CircularArrayIterator<T>::difference_type index) const -> T const&
+    {
+        return *iterator_at(index);
+    }
+
     auto begin() const -> CircularArrayIterator<T>
     {
         if (m_size != 0)
