@@ -114,6 +114,11 @@ public:
         return true;
     }
 
+    auto operator!=(CircularArray const& other) const -> bool
+    {
+        return !(*this == other);
+    }
+
     virtual ~CircularArray()
     {
         this->clear();
