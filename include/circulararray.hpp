@@ -334,11 +334,11 @@ public:
     {
         if (index == m_size)
         {
-            return CircularArrayIterator<T>(*this, m_array_end);
+            return CircularArrayIterator<T>(this, m_array_end);
         }
         else if (!is_parted())
         {
-            return CircularArrayIterator<T>(*this, m_front + index);
+            return CircularArrayIterator<T>(this, m_front + index);
         }
         else
         {
@@ -346,12 +346,12 @@ public:
 
             if (positions_remaining >= index)
             {
-                return CircularArrayIterator<T>(*this, m_front + index);
+                return CircularArrayIterator<T>(this, m_front + index);
             }
             else
             {
                 size_t index_remaining = index - positions_remaining - 1;
-                return CircularArrayIterator<T>(*this, m_array + index_remaining);
+                return CircularArrayIterator<T>(this, m_array + index_remaining);
             }
         }
     }
@@ -370,7 +370,7 @@ public:
     {
         if (m_size != 0)
         {
-            return CircularArrayIterator<T>(*this, m_front);
+            return CircularArrayIterator<T>(this, m_front);
         }
         else
         {
@@ -380,7 +380,7 @@ public:
 
     auto end() const -> CircularArrayIterator<T>
     {
-        return CircularArrayIterator<T>(*this, m_array_end);
+        return CircularArrayIterator<T>(this, m_array_end);
     }
 
     void enlarge()

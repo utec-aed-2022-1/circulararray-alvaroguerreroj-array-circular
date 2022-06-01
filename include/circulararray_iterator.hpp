@@ -11,7 +11,7 @@ template<class T>
 class CircularArrayIterator
 {
 private:
-    CircularArray<T> const& m_carr;
+    CircularArray<T> const* m_carr;
     T* m_ptr;
 
 public:
@@ -22,28 +22,24 @@ public:
     using reference = T&;
 
 public:
-    CircularArrayIterator(CircularArray<T> const& carr, T* ptr = nullptr)
+    CircularArrayIterator(CircularArray<T> const* carr, T* ptr = nullptr)
         : m_carr(carr),
           m_ptr(ptr)
     {
     }
 
-    CircularArrayIterator(CircularArrayIterator<T> const& it)
-        : m_carr(it.m_carr),
-          m_ptr(it.m_ptr)
+    CircularArrayIterator(CircularArrayIterator const& other)
+        : m_carr(other.m_carr),
+          m_ptr(other.m_ptr)
     {
     }
 
-    auto operator=(CircularArrayIterator<T> const& it) -> CircularArrayIterator<T>&
-    {
-        m_ptr = it.m_ptr;
-
-        return *this;
-    }
+    auto operator=(CircularArrayIterator<T> const& it) -> CircularArrayIterator<T>& = default;
+    auto operator=(CircularArrayIterator<T>&& it) noexcept -> CircularArrayIterator<T>& = default;
 
     operator bool() const
     {
-        return m_ptr != nullptr && m_ptr != m_carr.m_array_end;
+        return m_ptr != nullptr && m_ptr != m_carr->m_array_end;
         if (m_ptr)
             return true;
         else
@@ -52,7 +48,7 @@ public:
 
     auto operator==(CircularArrayIterator<T> const& it) const -> bool
     {
-        return m_ptr == it.m_ptr && &m_carr == &it.m_carr;
+        return m_ptr == it.m_ptr && m_carr == it.m_carr;
     }
 
     auto operator!=(CircularArrayIterator<T> const& it) const -> bool
@@ -62,7 +58,7 @@ public:
 
     auto operator+=(difference_type const& movement) -> CircularArrayIterator<T>&
     {
-        m_ptr = m_carr.iterator_at(this->index() + movement).m_ptr;
+        m_ptr = m_carr->iterator_at(this->index() + movement).m_ptr;
         return *this;
     }
 
@@ -114,7 +110,7 @@ public:
 
     auto operator-(CircularArrayIterator<T> const& it) const -> difference_type
     {
-        if (m_carr.is_parted())
+        if (m_carr->is_parted())
         {
             return this->index() - it.index();
         }
@@ -133,23 +129,23 @@ public:
      */
     auto index() const -> difference_type
     {
-        if (m_ptr == m_carr.m_array_end)
+        if (m_ptr == m_carr->m_array_end)
         {
-            return m_carr.m_size;
+            return m_carr->m_size;
         }
-        else if (m_carr.m_front <= m_ptr)
+        else if (m_carr->m_front <= m_ptr)
         {
-            return std::distance(m_carr.m_front, m_ptr);
+            return std::distance(m_carr->m_front, m_ptr);
         }
         else
         {
-            return m_carr.m_capacity - std::distance(m_ptr, m_carr.m_front);
+            return m_carr->m_capacity - std::distance(m_ptr, m_carr->m_front);
         }
     }
 
     auto operator<(CircularArrayIterator<T> const& other) -> bool
     {
-        if (!m_carr.is_parted())
+        if (!m_carr->is_parted())
         {
             return this->m_ptr < other.m_ptr;
         }
@@ -182,7 +178,7 @@ public:
      */
     auto between_front_and_array_end() const -> bool
     {
-        return (m_carr.m_front <= m_ptr) && (m_ptr < m_carr.m_array_end);
+        return (m_carr->m_front <= m_ptr) && (m_ptr < m_carr->m_array_end);
     }
 
     auto operator*() -> T&
