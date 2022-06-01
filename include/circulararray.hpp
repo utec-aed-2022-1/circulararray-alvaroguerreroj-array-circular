@@ -95,6 +95,24 @@ public:
         return *this;
     }
 
+    auto operator==(CircularArray const& other) const ->bool
+    {
+        if (this->size() != other.size())
+        {
+            return false;
+        }
+
+        for (size_t i = 0; i < this->size(); i++)
+        {
+            if ((*this)[i] != other[i])
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     virtual ~CircularArray()
     {
         this->clear();
