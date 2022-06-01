@@ -197,7 +197,7 @@ public:
 
     auto operator->() -> T*
     {
-        return *m_ptr;
+        return m_ptr;
     }
 
     auto getPtr() const -> T*
