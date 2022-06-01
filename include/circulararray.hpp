@@ -152,6 +152,50 @@ public:
         }
     }
 
+    template<typename... Args>
+    void emplace_front(Args... args)
+    {
+        if (m_size >= m_capacity)
+        {
+            enlarge();
+        }
+
+        if (m_front == nullptr)
+        {
+            m_front = m_array;
+            m_back = m_array;
+        }
+        else
+        {
+            m_front = prev(m_front);
+        }
+
+        *m_front = T(std::forward<Args>(args)...);
+        m_size++;
+    }
+
+    template<typename... Args>
+    void emplace_back(Args... args)
+    {
+        if (m_size >= m_capacity)
+        {
+            enlarge();
+        }
+
+        if (m_front == nullptr)
+        {
+            m_front = m_array;
+            m_back = m_array;
+        }
+        else
+        {
+            m_back = next(m_back);
+        }
+
+        *m_back = T(std::forward<Args>(args)...);
+        m_size++;
+    }
+
     void push_front(T data)
     {
         if (m_size >= m_capacity)
