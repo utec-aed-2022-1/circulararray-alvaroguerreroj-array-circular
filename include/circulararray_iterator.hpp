@@ -28,11 +28,8 @@ public:
     {
     }
 
-    CircularArrayIterator(CircularArrayIterator const& other)
-        : m_carr(other.m_carr),
-          m_ptr(other.m_ptr)
-    {
-    }
+    CircularArrayIterator(CircularArrayIterator const& other) = default;
+    CircularArrayIterator(CircularArrayIterator && other) noexcept = default;
 
     auto operator=(CircularArrayIterator<T> const& it) -> CircularArrayIterator<T>& = default;
     auto operator=(CircularArrayIterator<T>&& it) noexcept -> CircularArrayIterator<T>& = default;
