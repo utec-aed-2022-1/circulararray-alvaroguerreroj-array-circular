@@ -14,6 +14,9 @@
 template<class T>
 class CircularArray
 {
+public:
+    using value_type = T;
+
 private:
     friend class CircularArrayIterator<T>;
 
